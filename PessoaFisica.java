@@ -4,6 +4,8 @@ public class PessoaFisica extends Cliente{
 
     private String cpf;
 
+    
+    //getters & setters
     public String getCpf() {
         return cpf;  
     }
@@ -15,7 +17,7 @@ public class PessoaFisica extends Cliente{
 
     @Override
     public String toString() { //sobrescreve o método dentro da classe
-        return "[nome: " + getNome() + 
-               " cpf: " + cpf + "]";
+        return "nome: " + getNome() + 
+               " cpf: " + cpf;
     }
 }

@@ -9,6 +9,8 @@ public abstract class Cliente {
     
     }
 
+    //getters & setters
+
     public String getNome() {
         return nome;
     }

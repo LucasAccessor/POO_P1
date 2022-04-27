@@ -2,6 +2,8 @@
 public class PessoaJuridica extends Cliente{
     private String cnpj;
 
+    
+    //getters & setters
     public String getCnpj() {
         return cnpj;
     }
@@ -13,8 +15,8 @@ public class PessoaJuridica extends Cliente{
 
     @Override
     public String toString() { //sobrescreve o método dentro da classe
-        return "[nome: " + getNome() + 
-               " cnpj: " + getCnpj()  + "]";
+        return "nome: " + getNome() + 
+               " cnpj: " + getCnpj();
     }
 }
 
