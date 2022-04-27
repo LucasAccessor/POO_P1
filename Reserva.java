@@ -18,8 +18,23 @@ public class Reserva implements Pagamento{
 
     @Override
     public String toString() { 
-        
-        return "nome: " + cliente.getNome() + "";
+        Cliente c = null;
+        c = cliente;
+        String txtPgto, toStrg = "";
+        // forma de pagamento
+        if(pagamentoAvista){
+            txtPgto = "à Vista";
+        } else {
+            txtPgto = "à Prazo";
+        }
+        // tipo pessoa
+        if(c instanceof PessoaFisica){
+            toStrg = "tipo cliente: Pessoa Física, "  +"nome: " + cliente.getNome() + ", Forma de Pagto: " + txtPgto;
+        } else if (c instanceof PessoaJuridica) {
+            toStrg = "tipo cliente: Pessoa Jurídica, "  +"nome: " + cliente.getNome() + ", Forma de Pagto: " + txtPgto;
+        }
+
+        return toStrg;
     }
 
 
