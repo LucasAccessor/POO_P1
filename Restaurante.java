@@ -4,6 +4,7 @@ import java.util.List;
 public class Restaurante {
     
     private List<Reserva> reservas;
+    static int count = 0;
 
     public Restaurante(){
         this.setReservas(new ArrayList<>());
@@ -11,7 +12,7 @@ public class Restaurante {
 
     public void addReserva(Reserva r){
         this.reservas.add(r);
-        
+        count = count++;
     }
 
     //getters & setters

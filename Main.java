@@ -29,6 +29,7 @@ public class Main{
 					Operacoes.cancelamento();
 					break;
 				case 6: // fim
+					JOptionPane.showMessageDialog(null, "Obrigado! \n Feito por Lucas Accessor - 177350");
 					break;
 				}
 			}
