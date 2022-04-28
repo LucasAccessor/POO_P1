@@ -1,9 +1,14 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 public class Operacoes {
     
     //métodos menu
 	private static Restaurante restaurante = new Restaurante();
+    
+    private static ArrayList<Reserva> reservas = new ArrayList<>();
 
     public static void reservar(){
         boolean pgto = false;
@@ -51,7 +56,7 @@ public class Operacoes {
 
         cliente.setNome(nome);
         Reserva r = new Reserva(cliente, pgto);
-        restaurante.addReserva(r);
+        reservas.add(r);
         restaurante.count++;
         if(restaurante.count > 6){
             JOptionPane.showMessageDialog(null, "Aviso, o cliente se encontra na lista de espera!");
@@ -63,11 +68,29 @@ public class Operacoes {
     }
 
     public static void listarReservas(){
-        
+        //List<Reserva> reservas;
+        //reservas = restaurante.getReservas();
+        String lista = "lista das reservas: \n";
+        if (reservas.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nenhuma reserva até o momento!");
+        } else {
+            for(int i = 0; i < 6 && i < reservas.size(); i++){
+                lista += Integer.toString(i+1) + ". " + reservas.get(i) + "\n";
+            }
+            JOptionPane.showMessageDialog(null, lista);
+        }
     }
 
     public static void listarEspera(){
-        
+        String lista = "lista das esperas: \n";
+        if (reservas.size() <= 6) {
+            JOptionPane.showMessageDialog(null, "Nenhuma reserva na lista de espera até o momento!");
+        } else {
+            for(int i = 6; i < reservas.size(); i++){
+                lista += Integer.toString(i+1) + ". " + reservas.get(i) + "\n";
+            }
+            JOptionPane.showMessageDialog(null, lista);
+        }
     }
 
     public static void cancelamento(){

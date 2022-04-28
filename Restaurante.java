@@ -10,10 +10,6 @@ public class Restaurante {
         this.setReservas(new ArrayList<>());
     }
 
-    public void addReserva(Reserva r){
-        this.reservas.add(r);
-    }
-
     //getters & setters
     public List<Reserva> getReservas() {
         return reservas;

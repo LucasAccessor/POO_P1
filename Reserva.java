@@ -20,7 +20,7 @@ public class Reserva implements Pagamento{
     public String toString() { 
         Cliente c = null;
         c = cliente;
-        String txtPgto, toStrg = "";
+        String txtPgto = null, toStrg = null;
         // forma de pagamento
         if(pagamentoAvista){
             txtPgto = "à Vista";
@@ -29,9 +29,9 @@ public class Reserva implements Pagamento{
         }
         // tipo pessoa
         if(c instanceof PessoaFisica){
-            toStrg = "tipo cliente: Pessoa Física, "  +"nome: " + cliente.getNome() + ", Forma de Pagto: " + txtPgto;
+            toStrg = "Tipo Cliente: Pessoa Física, "  +" Nome: " + cliente.getNome() + ", Forma de Pagto: " + txtPgto;
         } else if (c instanceof PessoaJuridica) {
-            toStrg = "tipo cliente: Pessoa Jurídica, "  +"nome: " + cliente.getNome() + ", Forma de Pagto: " + txtPgto;
+            toStrg = "Tipo Cliente: Pessoa Jurídica, "  +" Nome: " + cliente.getNome() + ", Forma de Pagto: " + txtPgto;
         }
 
         return toStrg;
