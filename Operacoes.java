@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JOptionPane;
 
 public class Operacoes {
@@ -64,7 +62,46 @@ public class Operacoes {
     }
 
     public static void pesquisarReserva(){
-        
+        String busca = null, msgResultado = null, avisoListEsp = null;
+        boolean found = false;
+        busca = JOptionPane.showInputDialog("Digite o CPF ou CNPJ da reserva");
+        for(int i = 0; i < reservas.size(); i++){
+            if(reservas.get(i).getCliente() instanceof PessoaFisica){
+                Cliente cliente = reservas.get(i).getCliente();
+                PessoaFisica pf = (PessoaFisica) cliente;
+                if(pf.getCpf().equals(busca)){
+                    found = true;
+                    if(i >= 6){ //verifica se está na lista de espera
+                        avisoListEsp = "\nA reserva está na lista de espera";
+                    } else {
+                        avisoListEsp = "\nA reserva está na lista principal! (:";
+                    }
+                    msgResultado = "Parabéns, você possui uma reserva!";
+                }
+            }
+
+            if(reservas.get(i).getCliente() instanceof PessoaJuridica){
+                Cliente cliente = reservas.get(i).getCliente();
+                PessoaJuridica pj = (PessoaJuridica) cliente;
+                if(pj.getCnpj().equals(busca)){
+                    found = true;
+                    if(i >= 6){ //verifica se está na lista de espera
+                        avisoListEsp = "\nA reserva está na lista de espera";
+                    } else {
+                        avisoListEsp = "\nA reserva está na lista principal! (:";
+                    }
+                    msgResultado = "Parabéns, você possui uma reserva!";
+                }
+            }
+        }
+
+        if(!found){
+            msgResultado = "Não foi possível encontrar uma reserva com este dado ):";
+            avisoListEsp = null;
+        }
+
+        JOptionPane.showMessageDialog(null, msgResultado + avisoListEsp);
+
     }
 
     public static void listarReservas(){
@@ -94,10 +131,39 @@ public class Operacoes {
     }
 
     public static void cancelamento(){
-        
+        String busca = null, msgResultado = null;
+        boolean found = false;
+        busca = JOptionPane.showInputDialog("Digite o CPF ou CNPJ da reserva");
+        for(int i = 0; i < reservas.size(); i++){
+            if(reservas.get(i).getCliente() instanceof PessoaFisica){
+                Cliente cliente = reservas.get(i).getCliente();
+                PessoaFisica pf = (PessoaFisica) cliente;
+                if(pf.getCpf().equals(busca)){
+                    found = true;
+                    reservas.remove(i);
+                    msgResultado = "Reserva removida com sucesso \n Uma pena te ver partir  ):";
+                    restaurante.count--;
+                }
+            }
+
+            if(reservas.get(i).getCliente() instanceof PessoaJuridica){
+                Cliente cliente = reservas.get(i).getCliente();
+                PessoaJuridica pj = (PessoaJuridica) cliente;
+                if(pj.getCnpj().equals(busca)){
+                    found = true;
+                    reservas.remove(i);
+                    msgResultado = "Reserva removida com sucesso \n Uma pena te ver partir  ):";
+                    restaurante.count--;
+                }
+            }
+        }
+
+        if(!found){
+            msgResultado = "Não foi possível encontrar uma reserva com este dado ):";
+        }
+
+        JOptionPane.showMessageDialog(null, msgResultado);
+
     }
-
-
-    //metodos extras
 
 }
